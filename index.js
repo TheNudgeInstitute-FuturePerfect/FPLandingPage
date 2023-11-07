@@ -1,122 +1,232 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js'
-import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js'
-import { getFirestore, addDoc, collection, setDoc, query, where, getDocs, getDoc, doc, updateDoc, Timestamp, orderBy, deleteDoc } from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js'
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+$(document).ready(function () {
+    var targetPosition = 600;
+    var slots = '{"Number_Of_Slots":"2","Slot1":"22 Sep, Fri 05:00 PM","1":"3527424000220791740","Slot2":"22 Sep, Fri 08:00PM","2":"3527424000220791770"}';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-    apiKey: "AIzaSyBZxt4wYOB_8RMOkor4dNnHUefjFXr0W_8",
-    authDomain: "nudge-gamification-project.firebaseapp.com",
-    projectId: "nudge-gamification-project",
-    storageBucket: "nudge-gamification-project.appspot.com",
-    messagingSenderId: "1073076846196",
-    appId: "1:1073076846196:web:312257ab580e0b33e69b21",
-    measurementId: "G-B8MP4E9JE5"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-var phoneNumber;
-var _USER_DATA = {
-    name: "loading",
-    level: 0,
-    goal: 0,
-    talktime: 0
-}
-setUserData()
-
-$("#phoneNumberSubmit").on('click', async function () {
-    $(".step-1").hide()
-    $(".step-2").show()
-    phoneNumber = $("#phoneNumber").val()
-    phoneNumber = phoneNumber.trim()
-    const docRef = doc(db, "users", phoneNumber);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-        _USER_DATA = docSnap.data();
-    } else {
-        // docSnap.data() will be undefined in this case
-        console.log("No such document!");
-        if (!alert('No User Found!')) { window.location.reload(); }
-
-    }
-
-    //Set Ui
-    setUserData();
-    $(".step-2").hide()
-    $(".step-3").show()
-})
-
-const counterAnim = (qSelector, start = 0, end, duration = 1000) => {
-    const target = document.querySelector(qSelector);
-    let startTimestamp = null;
-    const step = (timestamp) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        target.innerText = Math.floor(progress * (end - start) + start);
-        if (progress < 1) {
-            window.requestAnimationFrame(step);
+    // ----------------------------------------------------
+    // Dynamically change number of people in UI
+    // ----------------------------------------------------
+    var onScroll = function () {
+        var scrollPosition = $(this).scrollTop();
+        // console.log(scrollPosition);
+        if (scrollPosition >= targetPosition) {
+            console.log("function hit");
+            targetPosition += 500;
+            let counts = setInterval(updated);
+            let upto = 0;
+            function updated() {
+                $("#SuccessStoriesSlider").carousel(0)
+                let count = document.getElementById("counter");
+                upto = upto + 50;
+                count.innerHTML = upto;
+                if (upto === 15000) {
+                    clearInterval(counts);
+                }
+            }
         }
-    };
-    window.requestAnimationFrame(step);
-};
-
-function setUserData() {
-    $("#userName").html(_USER_DATA.name + "!")
-    console.log(_USER_DATA.goal)
-    $("#goalTime").html(_USER_DATA.goal)
-    $("#counterAnimation").html(_USER_DATA.talktime)
-    let percent = (_USER_DATA.talktime / _USER_DATA.goal) * 100
-    $(".prog-bar").css("maxWidth", (percent + "%"));
-    try {
-        counterAnim("#counterAnimation", 0, _USER_DATA.talktime, 1000);
-    } catch (e) {
-        console.log(e)
     }
+    $(window).on('scroll', onScroll);
 
-    if (percent >= 0 && percent <= 30) {
-        $("#talkTimeMsg").html("ಅಯ್ಯೋ!!! ನೀವು ಇಂದು ತುಂಬಾ ಕಡಿಮೆ ಮಾತನಾಡಿದ್ದೀರಿ. ಪರವಾಗಿಲ್ಲ, ನಾಳೆ ನಾವು ಹೆಚ್ಚು ಮಾತನಾಡುವ ಗುರಿಯನ್ನು ಹೊಂದೋಣ!")
-    } else if (percent >= 31 && percent <= 70) {
-        $("#talkTimeMsg").html("ಉತ್ತಮ ಪ್ರಯತ್ನ, ಆದರೆ ನೀವು ನಿಮ್ಮ ಗುರಿಯನ್ನು ತಲುಪಲಿಲ್ಲ. ಚಿಂತಿಸಬೇಡಿ, ನಾಳೆ ನಿಮಗೆ ಮತ್ತೊಂದು ಅವಕಾಶ ಸಿಗುತ್ತದೆ.")
-    } else if (percent >= 71 && percent <= 99) {
-        $("#talkTimeMsg").html("ಒಳ್ಳೆ ಪ್ರಯತ್ನ! ನೀವು ಬಹುತೇಕ ನಿಮ್ಮ ಗುರಿಯನ್ನು ತಲುಪಿದ್ದೀರಿ. ನಾಳೆ ಕಷ್ಟಪಟ್ಟು ಪ್ರಯತ್ನಿಸಿ, ನೀವು ಖಂಡಿತವಾಗಿಯೂ ನಿಮ್ಮ ಗುರಿಯನ್ನು ತಲುಪುತ್ತೀರಿ")
-    } else if (percent >= 100) {
-        $("#talkTimeMsg").html("ಒಳ್ಳೆಯ ಪ್ರದರ್ಶನ!!! ನಿಮ್ಮ ಗುರಿಯನ್ನು ಮೀರಿಸಿದ್ದೀರಿ. ಅಭಿನಂದನೆಗಳು. ನೀವು ನಕ್ಷತ್ರವನ್ನು ಗಳಿಸಿದ್ದೀರಿ.")
-    } else {
-        $("#talkTimeMsg").html("");
-    }
+    // ----------------------------------------------------
+    // Validate Form in Step 1 before proceeding
+    // ----------------------------------------------------
 
-
-
-
-    for (var j = 1; j <= 5; j++) {
-        if ((_USER_DATA.level >= j)) {
-            $(".medal-" + j).show()
-            $(".medalPlaceholder-" + (j - 1)).hide()
+    function step1FormValid() {
+        let validation = true;
+        console.log("aaa");
+        if ($("#inputName").val() == "") {
+            $("#inputNameFeedback").show()
+            validation = false;
         } else {
-            $(".medal-" + j).hide()
-            $(".medalPlaceholder-" + (j - 1)).show()
-
+            $("#inputNameFeedback").hide()
         }
-    }
 
-    $("#minutes").html(_USER_DATA.goal)
-
-    for (var j = 1; j <= 3; j++) {
-        if (_USER_DATA.stars >= j) {
-            $(".star-filled-" + j).show()
-            $(".star-empty-" + j).hide()
+        if ($("#inputPhone").val().length < 10) {
+            $("#inputPhoneFeedback").show()
+            validation = false;
         } else {
-            $(".star-filled-" + j).hide()
-            $(".star-empty-" + j).show()
-
+            $("#inputPhoneFeedback").hide()
         }
+
+        let vaild_gender = false;
+        const radioButtons = document.getElementsByName('gender');
+        for (const radioButton of radioButtons) {
+            if (radioButton.checked) {
+              vaild_gender = true;
+              break;
+            }
+        }
+
+        if(vaild_gender){
+            $('#inputGenderFeedback').hide()
+        }
+        else{
+            $('#inputGenderFeedback').show()
+            validation = false;
+        }
+
+        const dropdownMenu = document.getElementById('inputReason');
+        const selectedOption = dropdownMenu.options[dropdownMenu.selectedIndex];
+
+        if (selectedOption.value === '') {
+            $('#inputReasonFeedback').show()
+            validation = false;
+        }
+        else{
+            $('#inputReasonFeedback').hide()
+        }
+
+        let valid_age = false;
+        const ageRadioButtons = document.getElementsByName('age');
+        for (const radioButton of ageRadioButtons) {
+            if (radioButton.checked) {
+                valid_age = true;
+              break;
+            }
+        }
+
+        if(valid_age){
+            $('#inputAgeFeedback').hide()
+        }
+        else{
+            $('#inputAgeFeedback').show()
+            validation = false;
+        }
+
+        if (!$("#customWhatsappCheck").is(":checked")) {
+            $("#inputWhatsappFeedback").show()
+            validation = false;
+        } else {
+            $("#inputWhatsappFeedback").hide()
+        }
+
+        return validation;
     }
 
+    // ----------------------------------------------------
+    // Update Total slots in UI
+    // ----------------------------------------------------
 
-}
+    function updateSlots() {
+        let slotsObj = JSON.parse(slots);
+        $(".slotsDiv").html("")
+        let html = ""
+        for (var i = 0; i < parseInt(slotsObj['Number_Of_Slots']); i++) {
+            console.log(slotsObj['Slot' + (i + 1)]);
+            html = html + '<label class="btn btn-weekdays"><input class="slotInputs" type="radio" name="options" id="' + slotsObj['Slot' + (i + 1)] + '" checked> ' + slotsObj['Slot' + (i + 1)] + '</label>'
+        }
+        $(".slotsDiv").html(html)
+
+    }
+
+    // ----------------------------------------------------
+    // Go to Step 2, update UI
+    // ----------------------------------------------------
+
+    $(".gotoStep2").on('click', async function () {
+        if (step1FormValid()) {
+            $(".step-1").hide();
+            $(".step-2").show();
+
+            const url = 'https://el-chatbot-790176496.development.catalystserverless.com/get_data';
+
+            const data = '{"action":"getdemoslots","language":"Kannada"}';
+
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'ZCFKEY': 'aab5bb6204a6c653a2e0590450e57d78',
+                    'Cookie': '"46512fd555=bbdfb771565421abbe10f7a180903d28; ZD_CSRF_TOKEN=d8354dd1-9e69-4a70-97f5-73374b273234; _zcsr_tmp=d8354dd1-9e69-4a70-97f5-73374b273234"',
+                    'Content-Type': 'application/json',
+                },
+                body: data,
+            });
+
+            slots = await response.text();
+            console.log(slots);
+            updateSlots();
+        }
+
+    })
+
+    // ----------------------------------------------------
+    // Go to Step 3, update UI
+    // ----------------------------------------------------
+
+    $(".gotoStep3").on('click', function () {
+
+        let Gender = "";
+        const GenderRadioButtons = document.getElementsByName('gender');
+
+        for (const radioButton of GenderRadioButtons) {
+            if (radioButton.checked) {
+                Gender = radioButton.value;
+            break;
+            }
+        }
+
+        let Age = "";
+        const AgeRadioButtons = document.getElementsByName('Age');
+
+        for (const radioButton of AgeRadioButtons) {
+            if (radioButton.checked) {
+                Age = radioButton.value;
+            break;
+            }
+        }
+
+        const dropdownMenu = document.getElementById('inputReason');
+        const Reason = dropdownMenu.options[dropdownMenu.selectedIndex];
+        
+        let selectedSlot=""; //data
+
+        for(let i=0; i< $(".slotInputs").length; i++){
+            if($(".slotInputs")[i].checked){
+                selectedSlot = $(".slotInputs")[1].id;
+            }
+        }
+
+        if(selectedSlot==""){
+            $("#selectSlotError").show()
+            return;
+        }else{
+            $("#selectSlotError").hide()
+        }
+
+        $(".step-1").hide();
+        $(".step-2").hide();
+        $(".step-3").show()
+
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("ZCFKEY", "aab5bb6204a6c653a2e0590450e57d78");
+        myHeaders.append("Cookie", "46512fd555=ba2a1b22f2a5e14b0d2647f7e38884fc; ZD_CSRF_TOKEN=98bf8780-3b99-4bf1-95ff-9fbce59d922b; _zcsr_tmp=98bf8780-3b99-4bf1-95ff-9fbce59d922b");
+
+        var raw = JSON.stringify({
+            "Student Name": $("#inputName").val(),
+            "Age": Age,
+            "Mobile Number": $("#inputPhone").val(),
+            "Gender": Gender,
+            "Reason": Reason,
+            "language": "kannada",
+            "slot" : selectedSlot,
+        });
+
+        console.log('sent params', raw);
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+        fetch("https://el-chatbot-790176496.development.catalystserverless.com/newlead", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+
+    })
+
+
+
+});
