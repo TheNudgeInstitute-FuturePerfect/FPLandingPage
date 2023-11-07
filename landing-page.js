@@ -47,11 +47,49 @@ $(document).ready(function () {
             $("#inputPhoneFeedback").hide()
         }
 
-        if ($("#inputPincode").val().length != 6) {
-            $("#inputPincodeFeedback").show()
+        let vaild_gender = false;
+        const radioButtons = document.getElementsByName('gender');
+        for (const radioButton of radioButtons) {
+            if (radioButton.checked) {
+              vaild_gender = true;
+              break;
+            }
+        }
+
+        if(vaild_gender){
+            $('#inputGenderFeedback').hide()
+        }
+        else{
+            $('#inputGenderFeedback').show()
             validation = false;
-        } else {
-            $("#inputPincodeFeedback").hide()
+        }
+
+        const dropdownMenu = document.getElementById('inputReason');
+        const selectedOption = dropdownMenu.options[dropdownMenu.selectedIndex];
+
+        if (selectedOption.value === '') {
+            $('#inputReasonFeedback').show()
+            validation = false;
+        }
+        else{
+            $('#inputReasonFeedback').hide()
+        }
+
+        let valid_age = false;
+        const ageRadioButtons = document.getElementsByName('age');
+        for (const radioButton of ageRadioButtons) {
+            if (radioButton.checked) {
+                valid_age = true;
+              break;
+            }
+        }
+
+        if(valid_age){
+            $('#inputAgeFeedback').hide()
+        }
+        else{
+            $('#inputAgeFeedback').show()
+            validation = false;
         }
 
         if (!$("#customWhatsappCheck").is(":checked")) {
@@ -116,6 +154,29 @@ $(document).ready(function () {
 
     $(".gotoStep3").on('click', function () {
 
+        let Gender = "";
+        const GenderRadioButtons = document.getElementsByName('gender');
+
+        for (const radioButton of GenderRadioButtons) {
+            if (radioButton.checked) {
+                Gender = radioButton.value;
+            break;
+            }
+        }
+
+        let Age = "";
+        const AgeRadioButtons = document.getElementsByName('Age');
+
+        for (const radioButton of AgeRadioButtons) {
+            if (radioButton.checked) {
+                Age = radioButton.value;
+            break;
+            }
+        }
+
+        const dropdownMenu = document.getElementById('inputReason');
+        const Reason = dropdownMenu.options[dropdownMenu.selectedIndex];
+        
         let selectedSlot=""; //data
 
         for(let i=0; i< $(".slotInputs").length; i++){
@@ -142,11 +203,12 @@ $(document).ready(function () {
 
         var raw = JSON.stringify({
             "Student Name": $("#inputName").val(),
-            "Age": "",
+            "Age": Age,
             "Mobile Number": $("#inputPhone").val(),
+            "Gender": Gender,
+            "Reason": Reason,
             "language": "kannada",
             "slot" : selectedSlot,
-            "pincode": $("#inputPincode").val()
         });
 
         console.log('sent params', raw);

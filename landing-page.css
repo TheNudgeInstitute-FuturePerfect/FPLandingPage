@@ -199,6 +199,10 @@ footer a {
     animation: spin 2s linear infinite;
   }
   
+.custom-radio{
+    margin-right: 10px;
+  }
+
   /* Safari */
   @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
