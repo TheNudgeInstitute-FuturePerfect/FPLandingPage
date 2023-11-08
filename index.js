@@ -63,10 +63,11 @@ $(document).ready(function () {
             validation = false;
         }
 
-        const dropdownMenu = document.getElementById('inputReason');
-        const selectedOption = dropdownMenu.options[dropdownMenu.selectedIndex];
+        const ReasondropdownMenu = document.getElementById('inputReason');
+        const ReasonselectedOption = ReasondropdownMenu.options[ReasondropdownMenu.selectedIndex];
+        console.log("Drop down menu :", ReasonselectedOption);
 
-        if (selectedOption.value === '') {
+        if (ReasonselectedOption.value === '') {
             $('#inputReasonFeedback').show()
             validation = false;
         }
@@ -75,7 +76,7 @@ $(document).ready(function () {
         }
 
         const AgedropdownMenu = document.getElementById('inputAge');
-        const AgeselectedOption = dropdownMenu.options[AgedropdownMenu.selectedIndex];
+        const AgeselectedOption = AgedropdownMenu.options[AgedropdownMenu.selectedIndex];
 
         if (AgeselectedOption.value === '') {
             $('#inputAgeFeedback').show()
@@ -157,12 +158,9 @@ $(document).ready(function () {
             }
         }
 
+        const Reason = document.getElementById('inputReason').value;
 
-        const dropdownMenu = document.getElementById('inputReason');
-        const Reason = dropdownMenu.options[dropdownMenu.selectedIndex];
-        
-        const AgedropdownMenu = document.getElementById('inputAge');
-        const Age = dropdownMenu.options[AgedropdownMenu.selectedIndex];
+        const Age = document.getElementById('inputAge').value;
 
         let selectedSlot=""; //data
 
