@@ -32,7 +32,6 @@ $(document).ready(function () {
 
     function step1FormValid() {
         let validation = true;
-        console.log("aaa");
         if ($("#inputName").val() == "") {
             $("#inputNameFeedback").show()
             validation = false;
@@ -75,21 +74,15 @@ $(document).ready(function () {
             $('#inputReasonFeedback').hide()
         }
 
-        let valid_age = false;
-        const ageRadioButtons = document.getElementsByName('age');
-        for (const radioButton of ageRadioButtons) {
-            if (radioButton.checked) {
-                valid_age = true;
-              break;
-            }
-        }
+        const AgedropdownMenu = document.getElementById('inputAge');
+        const AgeselectedOption = dropdownMenu.options[AgedropdownMenu.selectedIndex];
 
-        if(valid_age){
-            $('#inputAgeFeedback').hide()
-        }
-        else{
+        if (AgeselectedOption.value === '') {
             $('#inputAgeFeedback').show()
             validation = false;
+        }
+        else{
+            $('#inputAgeFeedback').hide()
         }
 
         if (!$("#customWhatsappCheck").is(":checked")) {
@@ -164,19 +157,13 @@ $(document).ready(function () {
             }
         }
 
-        let Age = "";
-        const AgeRadioButtons = document.getElementsByName('Age');
-
-        for (const radioButton of AgeRadioButtons) {
-            if (radioButton.checked) {
-                Age = radioButton.value;
-            break;
-            }
-        }
 
         const dropdownMenu = document.getElementById('inputReason');
         const Reason = dropdownMenu.options[dropdownMenu.selectedIndex];
         
+        const AgedropdownMenu = document.getElementById('inputAge');
+        const Age = dropdownMenu.options[AgedropdownMenu.selectedIndex];
+
         let selectedSlot=""; //data
 
         for(let i=0; i< $(".slotInputs").length; i++){

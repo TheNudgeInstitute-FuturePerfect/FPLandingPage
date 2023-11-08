@@ -303,7 +303,7 @@
                                         </div>
                                         <div class="custom-control custom-radio">
                                             <input type="radio" id="inputGenderDoesNotPreferToSay" name="gender" value="doesNotPreferToSay" class="custom-control-input">
-                                            <label class="custom-control-label" for="inputGenderDoesNotPreferToSay">Do not prefer to say</label>
+                                            <label class="custom-control-label" for="inputGenderDoesNotPreferToSay">prefer to say</label>
                                         </div>
                                         <div id="inputGenderFeedback" style="display: none;" class="invalid-feedback">
                                             Please select your gender
@@ -348,40 +348,26 @@
                                     </div>
                                 </div>                                  
                                 
-                                <div class="form-group row">
-                                    <label for="inputAge" class="col-3 col-form-label">Age</label>
-                                    <div class="col-9">
-                                      <div class="custom-control-inline">
-                                        <div class="custom-control custom-radio px-4">
-                                          <input type="radio" id="inputAgeUnder18" name="age" value="under18" class="custom-control-input">
-                                          <label class="custom-control-label" for="inputAgeUnder18">&lt;18</label>
-                                        </div>
-                                        <div class="custom-control custom-radio px-2">
-                                          <input type="radio" id="inputAge18To25" name="age" value="18To25" class="custom-control-input">
-                                          <label class="custom-control-label" for="inputAge18To25">18-25</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-9">
-                                        <div class="custom-control-inline">
-                                            <div class="custom-control custom-radio px-2">
-                                                <input type="radio" id="inputAgeOver35" name="age" value="over35" class="custom-control-input">
-                                                <label class="custom-control-label" for="inputAgeOver35">&gt;35</label>
-                                            </div>
-                                            <div class="custom-control custom-radio w-10">
-                                                <input type="radio" id="inputAge26To35" name="age" value="26To35" class="custom-control-input">
-                                                <label class="custom-control-label" for="inputAge26To35">26-35</label>
-                                            </div>
-                                        </div>
-                                        <div id="inputAgeFeedback" style="display: none;" class="invalid-feedback">
-                                        Please select your Age
-                                        </div>
-                                    </div>
-                                  </div>
-                                  
-                                </div>
-                                </div>
-                                  
 
+                                <div class="form-group row">
+                                    <label for="inputReason" class="col-12 col-form-label">Age </label>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <div class="col-12">
+                                      <select id="inputAge" class="form-control">
+                                        <option value="" selected>-- Select Age --</option>
+                                        <option value="under18">&lt;18</option>
+                                        <option value="18To25">18-25</option>
+                                        <option value="26To35">26-35</option>
+                                        <option value="over35">&gt;35</option>
+                                      </select>
+                                    </div>
+                                    <div id="inputAgeFeedback" style="display: none;" class="invalid-feedback px-3">
+                                        Please select a valid Age Group
+                                    </div>
+                                </div>
 
                                 <div class="form-group row">
                                     <div class="col-12 mt-3">
