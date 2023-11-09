@@ -211,7 +211,15 @@ $(document).ready(function () {
             .catch(error => console.log('error', error));
 
     })
-
-
-
 });
+
+function checkIfScrolledToBottom() {
+    return window.scrollY + window.innerHeight >= document.documentElement.scrollHeight;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (checkIfScrolledToBottom()) {
+        this.document.getElementById('last-button').click();
+    }
+  });
+  

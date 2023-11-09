@@ -27,7 +27,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light">
+    <nav class="navbar navbar-light ">
         <svg width="55" height="24" viewBox="0 0 55 24" fill="none" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect width="55" height="24" fill="url(#pattern0)" />
@@ -40,6 +40,8 @@
                 >
             </defs>
         </svg>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#freeClassModal"> Register for Trial Class
+        </button>
     </nav>
     <div class="jumbotron jumbotron-fluid p-0 mb-3">
         <div class="container p-0">
@@ -60,6 +62,12 @@
         </div>
     </div>
     <div class="container-fluid pb-5">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <button type="button" class="btn btn-black" data-toggle="modal" data-target="#freeClassModal"> Register for Trial Class
+                </button>
+            </div>
+        </div>
         <!-- Feature Cards -->
         <div class="row mt-2 px-2">
             <div class="col-6 pt-4 text-center ">
@@ -129,7 +137,7 @@
             <div class="col-12">
                 <p class="h3 mt-3">Success Stories</p>
             </div>
-            <div class="col-12 mt-3 my-2" id="success-col">
+            <div class="col-12 mt-3" id="success-col">
                 <div id="SuccessStoriesSlider" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active" data-interval="10000">
@@ -223,8 +231,329 @@
                     <img class="px-2 mt-2"
                         src="https://res.cloudinary.com/dvs9uoak0/image/upload/v1693071284/the-nudge/nudge-insta_bdxnoo.png"
                         alt="Nudge Insta" width="100%">
-                    <a href="https://www.instagram.com/jobcoach_ka/"><button type="button" class="btn btn-primary mt-4 my-3"> Follow Us </button></a>
+                    <button type="button" class="btn btn-primary mt-4 my-3" data-toggle="modal" data-target="#freeClassModalInsta" > Follow Us </button></a>
 
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="freeClassModal" tabindex="-1" role="dialog" aria-labelledby="freeClassModal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-body pb-0">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <form>
+
+                            <div class="step-1">
+                                <p class="h4 mt-5 text-center">Register for your Trail Class</p>
+                                <div class="form-group row mt-3">
+                                    <label for="inputName" class="col-3 col-form-label">Name</label>
+                                    <div class="col-9">
+                                        <input type="text" class="form-control" id="inputName">
+                                        <div id="inputNameFeedback" class="invalid-feedback">
+                                            Please type your name
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputPhone" class="col-3 col-form-label">Phone</label>
+                                    <div class="col-9">
+                                        <input type="number" class="form-control" id="inputPhone">
+                                        <div id="inputPhoneFeedback" class="invalid-feedback">
+                                            Please provide a valid Phone Number.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row ">
+                                    <label for="inputGender" class="col-3 col-form-label">Gender</label>
+                                    <div class="col-9">
+                                        <div class="custom-control-inline">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="inputGenderMale" name="gender" value="male" class="custom-control-input">
+                                                <label class="custom-control-label" for="inputGenderMale">Male</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="inputGenderFemale" name="gender" value="female" class="custom-control-input">
+                                                <label class="custom-control-label" for="inputGenderFemale">Female</label>
+                                            </div>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="inputGenderDoesNotPreferToSay" name="gender" value="doesNotPreferToSay" class="custom-control-input">
+                                            <label class="custom-control-label" for="inputGenderDoesNotPreferToSay">Prefer not to say</label>
+                                        </div>
+                                        <div id="inputGenderFeedback" style="display: none;" class="invalid-feedback">
+                                            Please select your gender
+                                        </div>
+                                    </div>
+                                    
+                                </div>    
+
+                                <div class="form-group row">
+                                    <label for="inputReason" class="col-12 col-form-label">What is your goal for learning <b>Spoken  English ?</b></label>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-12">
+                                      <select id="inputReason" class="form-control">
+                                        <option value="" selected>-- Select Reason --</option>
+                                        <option value="TeachMyChildren">Teach my children</option>
+                                        <option value="CrackMyInterview">Crack my interview</option>
+                                        <option value="SpeakInCollege">Speak in College</option>
+                                        <option value="FeelMoreConfident">Feel More Confident</option>
+                                        <option value="SpeakInOffice">Speak In office</option>
+                                      </select>
+                                    </div>
+                                    <div id="inputReasonFeedback" style="display: none;" class="invalid-feedback px-3">
+                                        Please select a valid reason
+                                    </div>
+                                </div>                                  
+                                
+
+                                <div class="form-group row">
+                                    <label for="inputReason" class="col-12 col-form-label">Age </label>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <div class="col-12">
+                                      <select id="inputAge" class="form-control">
+                                        <option value="" selected>-- Select Age --</option>
+                                        <option value="under18">&lt;18</option>
+                                        <option value="18To25">18-25</option>
+                                        <option value="26To35">26-35</option>
+                                        <option value="over35">&gt;35</option>
+                                      </select>
+                                    </div>
+                                    <div id="inputAgeFeedback" style="display: none;" class="invalid-feedback px-3">
+                                        Please select a valid Age Group
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-12 mt-3">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customWhatsappCheck" checked>
+                                            <label class="custom-control-label" for="customWhatsappCheck">Send me my Trial Class details on WhatsApp</label>
+                                            <div id="inputWhatsappFeedback" class="invalid-feedback">
+                                                Please check this to continue
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 text-center">
+                                        <button type="button" class="btn btn-yellow mt-4 my-3 gotoStep2"> Book Trial Class Now ! </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
+                        <div class="step-2" style="display: none;">
+                            <p class="h4 mt-5 text-center">
+                                Choose your day for the 
+                            <span class="yellow-text">Trial Class</span>
+                        </p>
+
+                            <div class="btn-group d-block text-center slotsDiv" data-toggle="buttons">
+                                <p class="text-center"></p>
+                                <div class="loader text-center m-auto"></div>
+                                <p class="text-center mt-2">Loading Available Slots</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <p class="text-center mt-2 mb-1" id="selectSlotError" style="display:none;">*Select a slot to proceed</p>
+                                    <button class="btn btn-yellow gotoStep3  mt-3">
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="step-3" style="display: none;">
+                            <p class="text-center my-3">Thank you! Your class is getting booked. Please check your WhatsApp for more details.</p>
+                            <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+                                type="module"></script>
+
+                            <dotlottie-player
+                                src="https://lottie.host/97bae03d-2bd7-4331-8e19-9f11d0799236/85a4MdBhOa.json"
+                                background="transparent" speed="1" style="width: 100%; height: auto;" loop
+                                autoplay></dotlottie-player>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12 p-0">
+                                <img width="100%"
+                                    src="https://res.cloudinary.com/dvs9uoak0/image/upload/v1693074643/the-nudge/modal-footer_v1gbi7.png"
+                                    alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- dialog with instagram redirect -->
+    <div class="modal fade" id="freeClassModalInsta" tabindex="-1" role="dialog" aria-labelledby="freeClassModalInsta"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-body pb-0">
+                            <button type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true">
+                                <a href="https://www.instagram.com/jobcoach_ka/" class="text-black">&times;</a></span>
+                            </button>
+                        <form>
+
+                            <div class="step-1">
+                                <p class="h4 mt-5 text-center">Register for your Trial Class</p>
+                                <div class="form-group row mt-3">
+                                    <label for="inputName" class="col-3 col-form-label">Name</label>
+                                    <div class="col-9">
+                                        <input type="text" class="form-control" id="inputName">
+                                        <div id="inputNameFeedback" class="invalid-feedback">
+                                            Please type your name
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputPhone" class="col-3 col-form-label">Phone</label>
+                                    <div class="col-9">
+                                        <input type="number" class="form-control" id="inputPhone">
+                                        <div id="inputPhoneFeedback" class="invalid-feedback">
+                                            Please provide a valid Phone Number.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row ">
+                                    <label for="inputGender" class="col-3 col-form-label">Gender</label>
+                                    <div class="col-9">
+                                        <div class="custom-control-inline">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="inputGenderMale" name="gender" value="male" class="custom-control-input">
+                                                <label class="custom-control-label" for="inputGenderMale">Male</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="inputGenderFemale" name="gender" value="female" class="custom-control-input">
+                                                <label class="custom-control-label" for="inputGenderFemale">Female</label>
+                                            </div>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="inputGenderDoesNotPreferToSay" name="gender" value="doesNotPreferToSay" class="custom-control-input">
+                                            <label class="custom-control-label" for="inputGenderDoesNotPreferToSay">Prefer not to say</label>
+                                        </div>
+                                        <div id="inputGenderFeedback" style="display: none;" class="invalid-feedback">
+                                            Please select your gender
+                                        </div>
+                                    </div>
+                                    
+                                </div>    
+
+                                <div class="form-group row">
+                                    <label for="inputReason" class="col-12 col-form-label">What is your goal for learning <b>Spoken  English ?</b></label>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-12">
+                                      <select id="inputReason" class="form-control">
+                                        <option value="" selected>-- Select Reason --</option>
+                                        <option value="TeachMyChildren">Teach my children</option>
+                                        <option value="CrackMyInterview">Crack my interview</option>
+                                        <option value="SpeakInCollege">Speak in College</option>
+                                        <option value="FeelMoreConfident">Feel More Confident</option>
+                                        <option value="SpeakInOffice">Speak In office</option>
+                                      </select>
+                                    </div>
+                                    <div id="inputReasonFeedback" style="display: none;" class="invalid-feedback px-3">
+                                        Please select a valid reason
+                                    </div>
+                                </div>                                  
+                                
+
+                                <div class="form-group row">
+                                    <label for="inputReason" class="col-12 col-form-label">Age </label>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <div class="col-12">
+                                      <select id="inputAge" class="form-control">
+                                        <option value="" selected>-- Select Age --</option>
+                                        <option value="under18">&lt;18</option>
+                                        <option value="18To25">18-25</option>
+                                        <option value="26To35">26-35</option>
+                                        <option value="over35">&gt;35</option>
+                                      </select>
+                                    </div>
+                                    <div id="inputAgeFeedback" style="display: none;" class="invalid-feedback px-3">
+                                        Please select a valid Age Group
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-12 mt-3">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customWhatsappCheck" checked>
+                                            <label class="custom-control-label" for="customWhatsappCheck">Send me my Trial Class details on WhatsApp</label>
+                                            <div id="inputWhatsappFeedback" class="invalid-feedback">
+                                                Please check this to continue
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 text-center">
+                                        <button type="button" class="btn btn-yellow mt-4 my-3 gotoStep2"> Book Trial Class Now ! </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
+                        <div class="step-2" style="display: none;">
+                            <p class="h4 mt-5 text-center">
+                                    Choose your day for the 
+                                <span class="yellow-text">Trial Class</span>
+                            </p>
+
+                            <div class="btn-group d-block text-center slotsDiv" data-toggle="buttons">
+                                <p class="text-center"></p>
+                                <div class="loader text-center m-auto"></div>
+                                <p class="text-center mt-2">Loading Available Slots</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <p class="text-center mt-2 mb-1" id="selectSlotError" style="display:none;">*Select a slot to proceed</p>
+                                    <button class="btn btn-yellow gotoStep3  mt-3">
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="step-3" style="display: none;">
+                            <p class="text-center my-3">Thank you! Your class is getting booked. Please check your WhatsApp for more details.</p>
+                            <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+                                type="module"></script>
+
+                            <dotlottie-player
+                                src="https://lottie.host/97bae03d-2bd7-4331-8e19-9f11d0799236/85a4MdBhOa.json"
+                                background="transparent" speed="1" style="width: 100%; height: auto;" loop
+                                autoplay></dotlottie-player>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12 p-0">
+                                <img width="100%"
+                                    src="https://res.cloudinary.com/dvs9uoak0/image/upload/v1693074643/the-nudge/modal-footer_v1gbi7.png"
+                                    alt="">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -247,7 +576,10 @@
                     >
                 </defs>
             </svg>
-            <p class="py-2 "><small>Powered by <a href="https://www.thenudge.org/">The Nudge Institute</a></small></p>
+            <div>
+                <button id="last-button" type="button" class="btn btn-primary mt-4 my-3" data-toggle="modal" data-target="#freeClassModal">  Register for Trial Class </button>
+            </div>
+            <p><small>Powered by <a href="https://www.thenudge.org/">The Nudge Institute</a></small></p>
         </div>
     </footer>
     <script type="module" src="index.js"></script>
