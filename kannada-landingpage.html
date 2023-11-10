@@ -24,13 +24,18 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsheetsts@0.3.82/index.min.js"></script>
+    <script>
+        function hidebutton(){
+            document.getElementById('insta').innerHTML= "<a href='https://www.instagram.com/jobcoach_ka/''> Follow Us </a>";
+        }
+    </script>
 </head>
 
 <body>
     <nav class="navbar navbar-light ">
-        <svg width="55" height="24" viewBox="0 0 55 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+        <svg width="71" height="50px" viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink">
-            <rect width="55" height="24" fill="url(#pattern0)" />
+            <rect width="60" height="24" fill="url(#pattern0)" />
             <defs>
                 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
                     <use xlink:href="#image0_198_105" transform="matrix(0.000978394 0 0 0.00224215 -0.000937627 0)" />
@@ -175,54 +180,6 @@
             </div>
         </div>
 
-        <!-- Reviews -->
-        <div class="row mt-4">
-            <div class="col-12">
-                <p class="h6 font-weight-bold">👀 Read what some of them have to say </p>
-            </div>
-            <div class="col-12" id="review-col">
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="review-cards mx-3">
-                                <img src="https://res.cloudinary.com/dvs9uoak0/image/upload/v1693070503/the-nudge/E3-p8skwtht94loe2c0qtmcflatyxha9du6grjmkjpkso_wr8fos.png"
-                                    alt="people 1">
-                                <p class="px-4 pb-4">"Thanks to Future Perfect's course, my English transformed. I now
-                                    confidently excel at work while studying. Grateful for the boosted vocabulary and
-                                    opportunities." - Vijaya Kumar</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="review-cards mx-3">
-                                <img src="https://res.cloudinary.com/dvs9uoak0/image/upload/v1693070502/the-nudge/E2-p8skvqyfgx4x61vzzuyn3d0xm4r8hsl6ngspw7apvs_egdsvt.png"
-                                    alt="people 2">
-                                <p class="px-4 pb-4">"Future Perfect changed my life. I was nervous to talk before. Now,
-                                    after the English classes, I feel confident and ready for work." -Tejasri</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="review-cards mx-3">
-                                <img src="https://res.cloudinary.com/dvs9uoak0/image/upload/v1693070503/the-nudge/E1-p8skuqaq2dqql9d8xx46w49yg3rx5ljnifcs6et2mg_wxpfdf.png"
-                                    alt="people 3">
-                                <p class="px-4 pb-4">I enjoyed my classes a lot, and I miss everyone now. Future Perfect
-                                    course is a lifetime memory for me. Future Perfect is a life turning opportunity for
-                                    me, and I’m glad that I chose Future perfect" -Ranjith. </p>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
         <!-- Instagram -->
         <div class="row">
             <div class="col-12">
@@ -231,8 +188,7 @@
                     <img class="px-2 mt-2"
                         src="https://res.cloudinary.com/dvs9uoak0/image/upload/v1693071284/the-nudge/nudge-insta_bdxnoo.png"
                         alt="Nudge Insta" width="100%">
-                    <button type="button" class="btn btn-primary mt-4 my-3" data-toggle="modal" data-target="#freeClassModalInsta" > Follow Us </button></a>
-
+                    <button id="insta" type="button" class="btn btn-primary mt-4 my-3" style="visibility: show;" data-toggle="modal" data-target="#freeClassModal" onclick="hidebutton()">Follow Us</button>
                 </div>
             </div>
         </div>
@@ -249,7 +205,7 @@
                         <form>
 
                             <div class="step-1">
-                                <p class="h4 mt-5 text-center">Register for your Trail Class</p>
+                                <p class="h4 mt-5 text-center">Register for your Trial Class</p>
                                 <div class="form-group row mt-3">
                                     <label for="inputName" class="col-3 col-form-label">Name</label>
                                     <div class="col-9">
@@ -397,168 +353,6 @@
         </div>
     </div>
 
-    <!-- dialog with instagram redirect -->
-    <div class="modal fade" id="freeClassModalInsta" tabindex="-1" role="dialog" aria-labelledby="freeClassModalInsta"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-
-                    <div class="modal-body pb-0">
-                            <button type="button" class="close" aria-label="Close">
-                            <span aria-hidden="true">
-                                <a href="https://www.instagram.com/jobcoach_ka/" class="text-black">&times;</a></span>
-                            </button>
-                        <form>
-
-                            <div class="step-1">
-                                <p class="h4 mt-5 text-center">Register for your Trial Class</p>
-                                <div class="form-group row mt-3">
-                                    <label for="inputName" class="col-3 col-form-label">Name</label>
-                                    <div class="col-9">
-                                        <input type="text" class="form-control" id="inputName">
-                                        <div id="inputNameFeedback" class="invalid-feedback">
-                                            Please type your name
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputPhone" class="col-3 col-form-label">Phone</label>
-                                    <div class="col-9">
-                                        <input type="number" class="form-control" id="inputPhone">
-                                        <div id="inputPhoneFeedback" class="invalid-feedback">
-                                            Please provide a valid Phone Number.
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row ">
-                                    <label for="inputGender" class="col-3 col-form-label">Gender</label>
-                                    <div class="col-9">
-                                        <div class="custom-control-inline">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" id="inputGenderMale" name="gender" value="male" class="custom-control-input">
-                                                <label class="custom-control-label" for="inputGenderMale">Male</label>
-                                            </div>
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" id="inputGenderFemale" name="gender" value="female" class="custom-control-input">
-                                                <label class="custom-control-label" for="inputGenderFemale">Female</label>
-                                            </div>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" id="inputGenderDoesNotPreferToSay" name="gender" value="doesNotPreferToSay" class="custom-control-input">
-                                            <label class="custom-control-label" for="inputGenderDoesNotPreferToSay">Prefer not to say</label>
-                                        </div>
-                                        <div id="inputGenderFeedback" style="display: none;" class="invalid-feedback">
-                                            Please select your gender
-                                        </div>
-                                    </div>
-                                    
-                                </div>    
-
-                                <div class="form-group row">
-                                    <label for="inputReason" class="col-12 col-form-label">What is your goal for learning <b>Spoken  English ?</b></label>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-12">
-                                      <select id="inputReason" class="form-control">
-                                        <option value="" selected>-- Select Reason --</option>
-                                        <option value="TeachMyChildren">Teach my children</option>
-                                        <option value="CrackMyInterview">Crack my interview</option>
-                                        <option value="SpeakInCollege">Speak in College</option>
-                                        <option value="FeelMoreConfident">Feel More Confident</option>
-                                        <option value="SpeakInOffice">Speak In office</option>
-                                      </select>
-                                    </div>
-                                    <div id="inputReasonFeedback" style="display: none;" class="invalid-feedback px-3">
-                                        Please select a valid reason
-                                    </div>
-                                </div>                                  
-                                
-
-                                <div class="form-group row">
-                                    <label for="inputReason" class="col-12 col-form-label">Age </label>
-                                </div>
-
-
-                                <div class="form-group row">
-                                    <div class="col-12">
-                                      <select id="inputAge" class="form-control">
-                                        <option value="" selected>-- Select Age --</option>
-                                        <option value="under18">&lt;18</option>
-                                        <option value="18To25">18-25</option>
-                                        <option value="26To35">26-35</option>
-                                        <option value="over35">&gt;35</option>
-                                      </select>
-                                    </div>
-                                    <div id="inputAgeFeedback" style="display: none;" class="invalid-feedback px-3">
-                                        Please select a valid Age Group
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-12 mt-3">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customWhatsappCheck" checked>
-                                            <label class="custom-control-label" for="customWhatsappCheck">Send me my Trial Class details on WhatsApp</label>
-                                            <div id="inputWhatsappFeedback" class="invalid-feedback">
-                                                Please check this to continue
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 text-center">
-                                        <button type="button" class="btn btn-yellow mt-4 my-3 gotoStep2"> Book Trial Class Now ! </button>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </form>
-
-                        <div class="step-2" style="display: none;">
-                            <p class="h4 mt-5 text-center">
-                                    Choose your day for the 
-                                <span class="yellow-text">Trial Class</span>
-                            </p>
-
-                            <div class="btn-group d-block text-center slotsDiv" data-toggle="buttons">
-                                <p class="text-center"></p>
-                                <div class="loader text-center m-auto"></div>
-                                <p class="text-center mt-2">Loading Available Slots</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 text-center">
-                                    <p class="text-center mt-2 mb-1" id="selectSlotError" style="display:none;">*Select a slot to proceed</p>
-                                    <button class="btn btn-yellow gotoStep3  mt-3">
-                                        Submit
-                                    </button>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="step-3" style="display: none;">
-                            <p class="text-center my-3">Thank you! Your class is getting booked. Please check your WhatsApp for more details.</p>
-                            <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
-                                type="module"></script>
-
-                            <dotlottie-player
-                                src="https://lottie.host/97bae03d-2bd7-4331-8e19-9f11d0799236/85a4MdBhOa.json"
-                                background="transparent" speed="1" style="width: 100%; height: auto;" loop
-                                autoplay></dotlottie-player>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-12 p-0">
-                                <img width="100%"
-                                    src="https://res.cloudinary.com/dvs9uoak0/image/upload/v1693074643/the-nudge/modal-footer_v1gbi7.png"
-                                    alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class='sk-ww-google-reviews' data-embed-id='223550'></div><script src='https://widgets.sociablekit.com/google-reviews/widget.js' async defer></script>
 
     <footer>
@@ -582,7 +376,7 @@
             <p><small>Powered by <a href="https://www.thenudge.org/">The Nudge Institute</a></small></p>
         </div>
     </footer>
-    <script type="module" src="index.js"></script>
+    <script type="module" src="kannada.js"></script>
 </body>
 
 </html>

@@ -7,6 +7,15 @@ nav {
     box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.31);
 }
 
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
 .btn-primary {
     border-radius: 62px !important;
     color: black !important;
