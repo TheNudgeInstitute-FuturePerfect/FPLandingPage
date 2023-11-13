@@ -166,7 +166,7 @@ $(document).ready(function () {
 
         for(let i=0; i< $(".slotInputs").length; i++){
             if($(".slotInputs")[i].checked){
-                selectedSlot = $(".slotInputs")[1].id;
+                selectedSlot = $(".slotInputs")[i].id;
             }
         }
 
