@@ -31,7 +31,7 @@
     </script>
 </head>
 
-<body>
+<body onload="getPopup()">
     <nav class="navbar navbar-light ">
         <svg width="71" height="50px" viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -45,7 +45,7 @@
                 >
             </defs>
         </svg>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#freeClassModal"> Register for Trial Class
+        <button id="first-button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#freeClassModal"> Register for Trial Class
         </button>
     </nav>
     <div class="jumbotron jumbotron-fluid p-0 mb-3">

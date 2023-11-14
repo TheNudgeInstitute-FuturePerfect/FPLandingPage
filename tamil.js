@@ -211,6 +211,10 @@ $(document).ready(function () {
             .catch(error => console.log('error', error));
 
     })
+
+    window.onload = () => {
+        document.getElementById('first-button').click();
+    };
 });
 
 function checkIfScrolledToBottom() {
