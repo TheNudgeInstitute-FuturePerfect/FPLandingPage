@@ -7,9 +7,7 @@ $(document).ready(function () {
     // ----------------------------------------------------
     var onScroll = function () {
         var scrollPosition = $(this).scrollTop();
-        // console.log(scrollPosition);
         if (scrollPosition >= targetPosition) {
-            console.log("function hit");
             targetPosition += 500;
             let counts = setInterval(updated);
             let upto = 0;
@@ -65,7 +63,6 @@ $(document).ready(function () {
 
         const ReasondropdownMenu = document.getElementById('inputReason');
         const ReasonselectedOption = ReasondropdownMenu.options[ReasondropdownMenu.selectedIndex];
-        console.log("Drop down menu :", ReasonselectedOption);
 
         if (ReasonselectedOption.value === '') {
             $('#inputReasonFeedback').show()
@@ -105,7 +102,6 @@ $(document).ready(function () {
         $(".slotsDiv").html("")
         let html = ""
         for (var i = 0; i < parseInt(slotsObj['Number_Of_Slots']); i++) {
-            console.log(slotsObj['Slot' + (i + 1)]);
             html = html + '<label class="btn btn-weekdays"><input class="slotInputs" type="radio" name="options" id="' + slotsObj['Slot' + (i + 1)] + '" checked> ' + slotsObj['Slot' + (i + 1)] + '</label>'
         }
         $(".slotsDiv").html(html)
@@ -136,7 +132,6 @@ $(document).ready(function () {
             });
 
             slots = await response.text();
-            console.log(slots);
             updateSlots();
         }
 
@@ -196,7 +191,6 @@ $(document).ready(function () {
             "slot" : selectedSlot,
         });
 
-        console.log('sent params', raw);
 
         var requestOptions = {
             method: 'POST',
@@ -215,6 +209,11 @@ $(document).ready(function () {
     window.onload = () => {
         document.getElementById('first-button').click();
     };
+
+
+    $('#insta').on('click', function(){
+        document.getElementById('insta').innerHTML= "<a href='https://instagram.com/jobcoach_tamil/'> Follow Us </a>";
+    });
 });
 
 function checkIfScrolledToBottom() {

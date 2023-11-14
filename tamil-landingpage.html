@@ -24,14 +24,9 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsheetsts@0.3.82/index.min.js"></script>
     <link rel="stylesheet" href="index.css">
-    <script>
-        function hidebutton(){
-            document.getElementById('insta').innerHTML= "<a href='https://www.instagram.com/jobcoach_ka/''> Follow Us </a>";
-        }
-    </script>
 </head>
 
-<body onload="getPopup()">
+<body>
     <nav class="navbar navbar-light ">
         <svg width="71" height="50px" viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -212,7 +207,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputPhone" class="col-3 col-form-label">Whatsapp number</label>
+                                    <label for="inputPhone" id="whatsappno" class="col-3 col-form-label">Whatsapp number</label>
                                     <div class="col-9">
                                         <input type="number" class="form-control" id="inputPhone">
                                         <div id="inputPhoneFeedback" class="invalid-feedback">
