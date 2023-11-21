@@ -1,0 +1,133 @@
+.reviews a{
+    text-decoration: none;
+    color: white;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.reviews-container{
+    background-color: rgb(252, 204, 10);
+    padding: 15px;
+}
+
+.reviews{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    font-family: century-gothic, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: rgb(252, 204, 10);
+}
+
+@media only screen and (max-width: 600px) {
+    .reviews{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+.columns{
+    display: grid;
+    gap: 10px;
+    width: auto;
+    height: max-content;
+}
+
+.card{
+    width: auto;
+    height: max-content;
+    background-color: rgb(229, 212, 143);
+    padding: 30px;
+    box-shadow: 2px 2px 2px 2px #d3c6c63f;
+}
+
+.lead{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 150px;
+    background-color: rgb(172, 141, 104); 
+    color: rgb(255, 255, 255); 
+    border-radius: 3px;
+    font-size: 15px;
+}
+
+.lead > p{
+    padding-top: 10px;
+}
+
+.checked {
+    color: rgb(235, 110, 0);
+}
+
+.reviewer-pic{
+    width: max-content;
+    padding-right: 10px;
+}
+
+.reviews img{
+    border-radius: 50%;
+}
+
+.reviewer-name{
+    margin-top:10px;
+    overflow-wrap: break-word; 
+}
+
+.reviewer-name > a{
+    color: rgb(172, 147, 117);
+}
+
+.reviewer-data{
+    margin-bottom: 20px;
+}
+
+.review-text{
+    margin-top: 10px; 
+    margin-bottom: 10px;
+}
+
+.view-google-review{
+    display: flex;
+    align-items: center;
+}
+
+.view-google-review a{
+    color: rgb(172, 147, 117);
+    margin-left: 10px;
+}
+
+.view-google-review img{
+    height: 20px;
+    width: 20px;
+}
+
+.load-more{
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.load-more button{
+    background-color: rgb(172, 141, 104);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.stars{
+    display: flex;
+    margin: 10px 0px;
+}
+
+.stars span{
+    margin-left: 3px;
+}
